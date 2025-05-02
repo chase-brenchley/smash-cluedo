@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/smash-cluedo/static/css/main.4512daf0.css",
-    "main.js": "/smash-cluedo/static/js/main.39ed15e0.js",
+    "main.css": "/smash-cluedo/static/css/main.fc595b97.css",
+    "main.js": "/smash-cluedo/static/js/main.733e16c5.js",
     "index.html": "/smash-cluedo/index.html",
-    "main.4512daf0.css.map": "/smash-cluedo/static/css/main.4512daf0.css.map",
-    "main.39ed15e0.js.map": "/smash-cluedo/static/js/main.39ed15e0.js.map"
+    "main.fc595b97.css.map": "/smash-cluedo/static/css/main.fc595b97.css.map",
+    "main.733e16c5.js.map": "/smash-cluedo/static/js/main.733e16c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.4512daf0.css",
-    "static/js/main.39ed15e0.js"
+    "static/css/main.fc595b97.css",
+    "static/js/main.733e16c5.js"
   ]
 }
