@@ -23,6 +23,7 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_URL: /cluedo/
+          CI: false
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
