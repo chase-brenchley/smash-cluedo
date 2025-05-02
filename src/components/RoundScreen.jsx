@@ -112,7 +112,7 @@ const RoundScreen = () => {
   const renderModifierSelection = () => (
     <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/30">
       <h2 className="text-2xl font-bold mb-4">Optional Modifier</h2>
-      <div className="mb-4 p-3 bg-white/10 rounded-lg">
+      <div className="mb-4 p-3 bg-white/10 rounded-lg flex justify-between">
         <p className="text-lg font-semibold">Selected Move:</p>
         <p className="text-xl">{selectedMove.name} ({selectedMove.points} points)</p>
       </div>
@@ -162,7 +162,7 @@ const RoundScreen = () => {
             <div className="flex items-center space-x-2">
               <button
                 onClick={handleKoDecrement}
-                className="w-12 h-12 bg-red-500/30 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-red-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-12 h-12 bg-red-500/60 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-red-500/80 disabled:opacity-50 disabled:cursor-not-allowed pressed:bg-red-500/80"
                 disabled={koCount === 0}
               >
                 -
@@ -176,22 +176,22 @@ const RoundScreen = () => {
               />
               <button
                 onClick={handleKoIncrement}
-                className="w-12 h-12 bg-green-500/30 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-green-500/40"
+                className="w-12 h-12 bg-green-500/60 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-green-500/80 pressed:bg-green-500/80"
               >
                 +
               </button>
             </div>
           </div>
-          <div className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg">
+          <div className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg flex-col">
             <input
               type="checkbox"
               checked={guessedCorrectly}
               onChange={handleGuessToggle}
-              className="w-6 h-6 rounded border-2 border-white/30 checked:bg-purple-500"
+              className="w-12 h-12 rounded-md border-2 border-white/30 checked:bg-purple-500 accent-purple-500"
             />
             <label className="text-lg">Correctly guessed another player's move</label>
           </div>
-          <div className="mt-4 p-3 bg-white/10 rounded-lg">
+          <div className="mt-4 p-3 bg-white/10 rounded-lg flex justify-between">
             <p className="text-lg font-semibold">Score Preview:</p>
             <p className="text-xl">{roundScore} points</p>
           </div>

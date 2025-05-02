@@ -40,6 +40,7 @@ const allModifiers = [
   // Special-specific modifiers
   { id: 4, name: 'Fully Charged', bonus: 2, allowedTypes: ['special', 'smash'] },
   { id: 5, name: 'KO Punch', bonus: 4, allowedTypes: ['special'] },
+  { id: 7, name: 'Counter', bonus: 4, allowedTypes: ['special'] },
   
   // Universal modifiers
   { id: 6, name: 'Reflect', bonus: 2, allowedTypes: ['aerial', 'ground', 'special', 'smash'] },
