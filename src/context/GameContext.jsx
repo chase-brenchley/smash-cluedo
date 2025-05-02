@@ -71,7 +71,7 @@ export const GameProvider = ({ children }) => {
     setSelectedMove(newState.selectedMove || selectedMove);
     setSelectedModifier(newState.selectedModifier !== undefined ? newState.selectedModifier : selectedModifier);
     setKoCount(newState.koCount || koCount);
-    setGuessedCorrectly(newState.guessedCorrectly || guessedCorrectly);
+    setGuessedCorrectly(newState.guessedCorrectly !== undefined ? newState.guessedCorrectly : guessedCorrectly);
     if (newState.roundScore !== undefined) {
       setRoundScore(newState.roundScore);
       setTotalScore(prevTotal => prevTotal + newState.roundScore);
