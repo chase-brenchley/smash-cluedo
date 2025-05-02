@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/cluedo/static/css/main.4512daf0.css",
+    "main.js": "/cluedo/static/js/main.39ed15e0.js",
+    "index.html": "/cluedo/index.html",
+    "main.4512daf0.css.map": "/cluedo/static/css/main.4512daf0.css.map",
+    "main.39ed15e0.js.map": "/cluedo/static/js/main.39ed15e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4512daf0.css",
+    "static/js/main.39ed15e0.js"
+  ]
+}
