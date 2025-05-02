@@ -2,7 +2,17 @@ import React from 'react';
 import { useGame } from '../context/GameContext';
 
 const ScoreScreen = () => {
-  const { score, currentRound, updateGameState, gameState } = useGame();
+  const { 
+    roundScore,
+    totalScore,
+    currentRound, 
+    updateGameState, 
+    gameState,
+    selectedMove,
+    selectedModifier,
+    koCount,
+    guessedCorrectly
+  } = useGame();
 
   const handleReady = () => {
     updateGameState({
@@ -19,12 +29,36 @@ const ScoreScreen = () => {
     return null;
   }
 
+  const movePoints = selectedMove ? selectedMove.points : 0;
+  const modifierMultiplier = selectedModifier ? selectedModifier.multiplier : 1;
+  const guessBonus = guessedCorrectly ? 2 : 0;
+
   return (
     <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/30">
       <h2 className="text-2xl font-bold mb-4">Score Screen</h2>
-      <div className="space-y-2">
-        <p>Total Score: {score}</p>
-        <p>Round: {currentRound}</p>
+      <div className="space-y-4">
+        <div className="p-3 bg-white/10 rounded-lg">
+          <p className="text-lg font-semibold">Round Summary:</p>
+          <p className="text-xl">{selectedMove.name} ({selectedMove.points} points)</p>
+          {selectedModifier && (
+            <p className="text-xl">+ {selectedModifier.name} (x{selectedModifier.multiplier})</p>
+          )}
+          <p className="text-xl">× {koCount} KOs</p>
+          {guessedCorrectly && (
+            <p className="text-xl">+ 2 points (Correct Guess)</p>
+          )}
+        </div>
+        <div className="p-3 bg-white/10 rounded-lg">
+          <p className="text-lg font-semibold">Score Calculation:</p>
+          <p className="text-xl">
+            {movePoints} × {modifierMultiplier} × {koCount} + {guessBonus} = {roundScore}
+          </p>
+        </div>
+        <div className="p-3 bg-white/10 rounded-lg">
+          <p className="text-lg font-semibold">Round Score: {roundScore}</p>
+          <p className="text-lg font-semibold">Total Score: {totalScore}</p>
+          <p className="text-lg">Round: {currentRound}</p>
+        </div>
       </div>
       <button
         onClick={handleReady}

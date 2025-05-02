@@ -53,7 +53,8 @@ export const GameProvider = ({ children }) => {
   const [selectedModifier, setSelectedModifier] = useState(null);
   const [koCount, setKoCount] = useState(0);
   const [guessedCorrectly, setGuessedCorrectly] = useState(false);
-  const [score, setScore] = useState(0);
+  const [roundScore, setRoundScore] = useState(0);
+  const [totalScore, setTotalScore] = useState(0);
   const [gameState, setGameState] = useState('moveSelection');
 
   const getApplicableModifiers = (move) => {
@@ -68,10 +69,13 @@ export const GameProvider = ({ children }) => {
     setCurrentRound(newState.currentRound || currentRound);
     setMoves(newState.moves || moves);
     setSelectedMove(newState.selectedMove || selectedMove);
-    setSelectedModifier(newState.selectedModifier || selectedModifier);
+    setSelectedModifier(newState.selectedModifier !== undefined ? newState.selectedModifier : selectedModifier);
     setKoCount(newState.koCount || koCount);
     setGuessedCorrectly(newState.guessedCorrectly || guessedCorrectly);
-    setScore(newState.score || score);
+    if (newState.roundScore !== undefined) {
+      setRoundScore(newState.roundScore);
+      setTotalScore(prevTotal => prevTotal + newState.roundScore);
+    }
     if (newState.gameState) {
       setGameState(newState.gameState);
     }
@@ -105,7 +109,8 @@ export const GameProvider = ({ children }) => {
       selectedModifier,
       koCount,
       guessedCorrectly,
-      score,
+      roundScore,
+      totalScore,
       gameState,
       updateGameState,
       nextState,
