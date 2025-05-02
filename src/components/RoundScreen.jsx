@@ -10,6 +10,7 @@ const RoundScreen = () => {
     koCount, 
     guessedCorrectly, 
     gameState,
+    currentRound,
     updateGameState,
     nextState
   } = useGame();
@@ -19,7 +20,7 @@ const RoundScreen = () => {
     // Select 3 random moves for the round
     const shuffled = [...moves].sort(() => 0.5 - Math.random());
     setRoundMoves(shuffled.slice(0, 3));
-  }, [moves]);
+  }, [moves, currentRound]);
 
   const handleMoveSelect = (move) => {
     updateGameState({ selectedMove: move });

@@ -5,9 +5,30 @@ const GameContext = createContext();
 export const useGame = () => useContext(GameContext);
 
 const sampleMoves = [
+  // High points (Tilts, Throws)
   { id: 1, name: 'Up Tilt', points: 3 },
-  { id: 2, name: 'Down Air', points: 2 },
-  { id: 3, name: 'Forward Smash', points: 1 },
+  { id: 2, name: 'Down Tilt', points: 3 },
+  { id: 3, name: 'Forward Tilt', points: 3 },
+  { id: 4, name: 'Back Throw', points: 3 },
+  { id: 5, name: 'Up Throw', points: 3 },
+  { id: 6, name: 'Down Throw', points: 3 },
+  { id: 7, name: 'Forward Throw', points: 3 },
+  
+  // Medium points (Aerials, Specials)
+  { id: 8, name: 'Neutral Air', points: 2 },
+  { id: 9, name: 'Forward Air', points: 2 },
+  { id: 10, name: 'Back Air', points: 2 },
+  { id: 11, name: 'Up Air', points: 2 },
+  { id: 12, name: 'Down Air', points: 2 },
+  { id: 13, name: 'Neutral Special', points: 2 },
+  { id: 14, name: 'Side Special', points: 2 },
+  { id: 15, name: 'Up Special', points: 2 },
+  { id: 16, name: 'Down Special', points: 2 },
+  
+  // Low points (Smash Attacks)
+  { id: 17, name: 'Forward Smash', points: 1 },
+  { id: 18, name: 'Up Smash', points: 1 },
+  { id: 19, name: 'Down Smash', points: 1 },
 ];
 
 const sampleModifiers = [
