@@ -71,9 +71,9 @@ const RoundScreen = () => {
   const handleFinish = () => {
     // Calculate score based on selected move, modifier, KO count, and guess
     const movePoints = selectedMove ? selectedMove.points : 0;
-    const modifierMultiplier = selectedModifier ? selectedModifier.multiplier : 1;
+    const modifierBonus = selectedModifier ? selectedModifier.bonus : 0;
     const guessBonus = guessedCorrectly ? 2 : 0;
-    const roundScore = (movePoints * modifierMultiplier * koCount) + guessBonus;
+    const roundScore = (movePoints + modifierBonus) * koCount + guessBonus;
     updateGameState({ roundScore, gameState: 'score' });
   };
 
@@ -116,7 +116,7 @@ const RoundScreen = () => {
                 : 'bg-white/30 hover:bg-white/40'
             }`}
           >
-            {modifier.name} (x{modifier.multiplier})
+            {modifier.name} (+{modifier.bonus} points)
           </button>
         ))}
         <button
@@ -131,9 +131,9 @@ const RoundScreen = () => {
 
   const renderKoInput = () => {
     const movePoints = selectedMove ? selectedMove.points : 0;
-    const modifierMultiplier = selectedModifier ? selectedModifier.multiplier : 1;
+    const modifierBonus = selectedModifier ? selectedModifier.bonus : 0;
     const guessBonus = guessedCorrectly ? 2 : 0;
-    const roundScore = (movePoints * modifierMultiplier * koCount) + guessBonus;
+    const roundScore = (movePoints + modifierBonus) * koCount + guessBonus;
 
     return (
       <div className="bg-white/20 backdrop-blur-md rounded-xl p-6 shadow-lg border border-white/30">
@@ -142,7 +142,7 @@ const RoundScreen = () => {
           <p className="text-lg font-semibold">Selected Move:</p>
           <p className="text-xl">{selectedMove.name} ({selectedMove.points} points)</p>
           {selectedModifier && (
-            <p className="text-xl">+ {selectedModifier.name} (x{selectedModifier.multiplier})</p>
+            <p className="text-xl">+ {selectedModifier.name} (+{selectedModifier.bonus} points)</p>
           )}
         </div>
         <div className="space-y-4">
@@ -169,9 +169,7 @@ const RoundScreen = () => {
           </div>
           <div className="mt-4 p-3 bg-white/10 rounded-lg">
             <p className="text-lg font-semibold">Score Preview:</p>
-            <p className="text-xl">
-              {movePoints} × {modifierMultiplier} × {koCount} + {guessBonus} = {roundScore}
-            </p>
+            <p className="text-xl">{roundScore} points</p>
           </div>
           <button
             onClick={handleFinish}

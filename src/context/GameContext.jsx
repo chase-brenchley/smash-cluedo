@@ -33,16 +33,16 @@ const sampleMoves = [
 
 const allModifiers = [
   // Aerial-specific modifiers
-  { id: 1, name: 'Spike', multiplier: 1.5, allowedTypes: ['aerial'] },
-  { id: 2, name: 'Reversed', multiplier: 1.2, allowedTypes: ['aerial', 'special'] },
-  { id: 3, name: 'Projectile', multiplier: 1.3, allowedTypes: ['aerial', 'special'] },
+  { id: 1, name: 'Spike', bonus: 3, allowedTypes: ['aerial'] },
+  { id: 2, name: 'Reversed', bonus: 2, allowedTypes: ['aerial', 'special'] },
+  { id: 3, name: 'Projectile', bonus: 2, allowedTypes: ['aerial', 'special'] },
   
   // Special-specific modifiers
-  { id: 4, name: 'Fully Charged', multiplier: 1.3, allowedTypes: ['special', 'smash'] },
-  { id: 5, name: 'KO Punch', multiplier: 2.0, allowedTypes: ['special'] },
+  { id: 4, name: 'Fully Charged', bonus: 2, allowedTypes: ['special', 'smash'] },
+  { id: 5, name: 'KO Punch', bonus: 4, allowedTypes: ['special'] },
   
   // Universal modifiers
-  { id: 6, name: 'Reflect', multiplier: 1.3, allowedTypes: ['aerial', 'ground', 'special', 'smash'] },
+  { id: 6, name: 'Reflect', bonus: 2, allowedTypes: ['aerial', 'ground', 'special', 'smash'] },
 ];
 
 export const GameProvider = ({ children }) => {

@@ -30,7 +30,7 @@ const ScoreScreen = () => {
   }
 
   const movePoints = selectedMove ? selectedMove.points : 0;
-  const modifierMultiplier = selectedModifier ? selectedModifier.multiplier : 1;
+  const modifierBonus = selectedModifier ? selectedModifier.bonus : 0;
   const guessBonus = guessedCorrectly ? 2 : 0;
 
   return (
@@ -41,7 +41,7 @@ const ScoreScreen = () => {
           <p className="text-lg font-semibold">Round Summary:</p>
           <p className="text-xl">{selectedMove.name} ({selectedMove.points} points)</p>
           {selectedModifier && (
-            <p className="text-xl">+ {selectedModifier.name} (x{selectedModifier.multiplier})</p>
+            <p className="text-xl">+ {selectedModifier.name} (+{selectedModifier.bonus} points)</p>
           )}
           <p className="text-xl">× {koCount} KOs</p>
           {guessedCorrectly && (
@@ -49,14 +49,8 @@ const ScoreScreen = () => {
           )}
         </div>
         <div className="p-3 bg-white/10 rounded-lg">
-          <p className="text-lg font-semibold">Score Calculation:</p>
-          <p className="text-xl">
-            {movePoints} × {modifierMultiplier} × {koCount} + {guessBonus} = {roundScore}
-          </p>
-        </div>
-        <div className="p-3 bg-white/10 rounded-lg">
-          <p className="text-lg font-semibold">Round Score: {roundScore}</p>
-          <p className="text-lg font-semibold">Total Score: {totalScore}</p>
+          <p className="text-lg font-semibold">Round Score: {roundScore} points</p>
+          <p className="text-lg font-semibold">Total Score: {totalScore} points</p>
           <p className="text-lg">Round: {currentRound}</p>
         </div>
       </div>
