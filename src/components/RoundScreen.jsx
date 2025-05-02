@@ -99,7 +99,7 @@ const RoundScreen = () => {
             className={`w-full p-3 rounded-lg ${
               selectedMove && selectedMove.id === move.id
                 ? 'bg-blue-500 text-white'
-                : 'bg-white/30 hover:bg-white/40'
+                : 'bg-blue-500/30 hover:bg-blue-500/40'
             }`}
           >
             {move.name} ({move.points} points)
@@ -123,8 +123,8 @@ const RoundScreen = () => {
             onClick={() => handleModifierSelect(modifier)}
             className={`w-full p-2 rounded-lg ${
               selectedModifier && selectedModifier.id === modifier.id
-                ? 'bg-green-500 text-white'
-                : 'bg-white/30 hover:bg-white/40'
+                ? 'bg-purple-500 text-white'
+                : 'bg-purple-500/30 hover:bg-purple-500/40'
             }`}
           >
             {modifier.name} (+{modifier.bonus} points)
@@ -132,7 +132,7 @@ const RoundScreen = () => {
         ))}
         <button
           onClick={handleSkipModifier}
-          className="w-full p-2 rounded-lg bg-white/30 hover:bg-white/40 mt-4"
+          className="w-full p-2 rounded-lg bg-gray-500/30 hover:bg-gray-500/40 mt-4"
         >
           Skip Modifier
         </button>
