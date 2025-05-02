@@ -61,7 +61,18 @@ const RoundScreen = () => {
   };
 
   const handleKoChange = (e) => {
-    updateGameState({ koCount: parseInt(e.target.value) || 0 });
+    const value = parseInt(e.target.value) || 0;
+    updateGameState({ koCount: value });
+  };
+
+  const handleKoIncrement = () => {
+    updateGameState({ koCount: koCount + 1 });
+  };
+
+  const handleKoDecrement = () => {
+    if (koCount > 0) {
+      updateGameState({ koCount: koCount - 1 });
+    }
   };
 
   const handleGuessToggle = () => {
@@ -145,27 +156,40 @@ const RoundScreen = () => {
             <p className="text-xl">+ {selectedModifier.name} (+{selectedModifier.bonus} points)</p>
           )}
         </div>
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
-            <label className="block mb-2">Number of KOs:</label>
-            <input
-              type="number"
-              value={koCount}
-              onChange={handleKoChange}
-              className="w-full p-2 rounded-lg bg-white/30"
-              min="0"
-            />
-          </div>
-          <div>
-            <label className="flex items-center">
+            <label className="block mb-2 text-lg">Number of KOs:</label>
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={handleKoDecrement}
+                className="w-12 h-12 bg-red-500/30 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-red-500/40 disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={koCount === 0}
+              >
+                -
+              </button>
               <input
-                type="checkbox"
-                checked={guessedCorrectly}
-                onChange={handleGuessToggle}
-                className="mr-2"
+                type="number"
+                value={koCount}
+                onChange={handleKoChange}
+                className="flex-1 h-12 p-2 rounded-lg bg-white/30 text-center text-xl"
+                min="0"
               />
-              Correctly guessed another player's move
-            </label>
+              <button
+                onClick={handleKoIncrement}
+                className="w-12 h-12 bg-green-500/30 rounded-lg flex items-center justify-center text-2xl font-bold hover:bg-green-500/40"
+              >
+                +
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center space-x-3 p-3 bg-white/10 rounded-lg">
+            <input
+              type="checkbox"
+              checked={guessedCorrectly}
+              onChange={handleGuessToggle}
+              className="w-6 h-6 rounded border-2 border-white/30 checked:bg-purple-500"
+            />
+            <label className="text-lg">Correctly guessed another player's move</label>
           </div>
           <div className="mt-4 p-3 bg-white/10 rounded-lg">
             <p className="text-lg font-semibold">Score Preview:</p>
@@ -173,7 +197,7 @@ const RoundScreen = () => {
           </div>
           <button
             onClick={handleFinish}
-            className="mt-6 w-full bg-purple-500 text-white py-2 rounded-lg hover:bg-purple-600"
+            className="mt-6 w-full bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 text-lg font-semibold"
           >
             Finish Round
           </button>
